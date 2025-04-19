@@ -1,0 +1,94 @@
+/* Global Styles */
+body {
+    background-color: #f5f5f5;
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container */
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+  
+  /* Search Field */
+  .search-field {
+    margin-bottom: 20px;
+  }
+  
+  /* Table */
+  .MuiTable-root {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  /* Table Header */
+  .MuiTableHead-root {
+    background-color: #00796b;
+  }
+  
+  .MuiTableCell-root {
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  /* Table Body */
+  .MuiTableBody-root {
+    background-color: #ffffff;
+  }
+  
+  .MuiTableRow-root:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Sorting Buttons */
+  .MuiButton-root {
+    margin-left: 8px;
+    border-radius: 4px;
+  }
+  
+  /* Dialog */
+  .MuiDialog-paper {
+    min-width: 400px;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .MuiDialogTitle-root {
+    font-size: 20px;
+    font-weight: 600;
+    color: #00796b;
+    text-align: center;
+  }
+  
+  .MuiDialogContent-root {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Form Control */
+  .MuiFormControl-root {
+    margin-bottom: 15px;
+  }
+  
+  /* Button Styles */
+  .MuiButton-containedPrimary {
+    background-color: #00796b;
+    color: white;
+  }
+  
+  .MuiButton-containedSecondary {
+    background-color: #d32f2f;
+    color: white;
+  }
