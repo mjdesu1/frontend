@@ -1,0 +1,471 @@
+/* Modern 2025 Design System - AdminDashboard.css */
+:root {
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --secondary-color: #10b981;
+  --dark-bg: #111827;
+  --light-bg: #f9fafb;
+  --card-bg: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-light: #f3f4f6;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+  --glow-effect: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--light-bg);
+}
+
+/* Dashboard container with glass morphism effect */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e9f9fb 100%);
+  position: relative;
+}
+
+/* Modern glass morphism sidebar */
+.dashboard-nav {
+  width: 280px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  transition: transform var(--transition-speed) ease-in-out, width var(--transition-speed) ease-in-out;
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.dashboard-nav.closed {
+  transform: translateX(-280px);
+}
+
+.dashboard-nav.open {
+  transform: translateX(0);
+}
+
+/* Header in the sidebar with brand accent */
+.nav-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  text-align: center;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.nav-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+/* List styles with modern hover effects */
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: transparent;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.nav-item:hover {
+  background-color: rgba(99, 102, 241, 0.08);
+  color: var(--primary-color);
+  transform: translateX(4px);
+}
+
+.nav-item:hover::before {
+  background-color: var(--primary-color);
+}
+
+.nav-item.active {
+  background-color: rgba(99, 102, 241, 0.12);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.nav-item.active::before {
+  background-color: var(--primary-color);
+}
+
+.nav-icon {
+  margin-right: 12px;
+  font-size: 20px;
+  color: currentColor;
+  transition: transform var(--transition-speed) ease;
+}
+
+.nav-item:hover .nav-icon {
+  transform: scale(1.1);
+  color: var(--primary-color);
+}
+
+.nav-item.active .nav-icon {
+  color: var(--primary-color);
+}
+
+/* Modern elevated logout button */
+.logout-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #fee2e2;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.logout-btn:hover {
+  background-color: #fecaca;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+.logout-btn .nav-icon {
+  margin-right: 0;
+}
+
+/* FIXED: Hamburger button positioning */
+.hamburger-menu {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1001; /* Higher z-index to stay on top */
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-speed) ease;
+}
+
+/* Position adjustment when sidebar is open */
+.dashboard-nav.open ~ .hamburger-menu {
+  left: 296px;
+}
+
+.hamburger-menu:hover {
+  background-color: var(--primary-hover);
+  box-shadow: var(--glow-effect);
+  transform: scale(1.05);
+}
+
+/* Main content area adjustments */
+.dashboard-content {
+  margin-left: 280px; 
+  padding: 32px;
+  transition: margin-left var(--transition-speed) ease-in-out;
+  background: transparent;
+  overflow-y: auto;
+  height: 100vh;
+  width: calc(100vw - 280px);
+  box-sizing: border-box;
+}
+
+/* When sidebar is closed */
+.dashboard-nav.closed + .dashboard-content {
+  margin-left: 0;
+  width: 100vw;
+}
+
+/* Enhanced Epic Logout Animation Screen */
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #4f46e5 0%, #1e40af 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Background patterns for loading screen */
+.loading-screen::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 2px);
+  background-size: 30px 30px;
+  animation: backgroundMove 5s linear infinite;
+  z-index: -1;
+}
+
+@keyframes backgroundMove {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100px) rotate(5deg);
+  }
+}
+
+/* Epic portal effect for logout */
+.logout-portal {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.portal-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 4px solid white;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.portal-ring:nth-child(1) {
+  width: 280px;
+  height: 280px;
+  border-color: rgba(255, 255, 255, 0.8);
+  animation: portalRing 5s ease-in-out infinite, glowRing 5s ease-in-out infinite;
+  animation-delay: 0.1s;
+}
+
+.portal-ring:nth-child(2) {
+  width: 220px;
+  height: 220px;
+  border-color: rgba(255, 255, 255, 0.7);
+  animation: portalRing 5s ease-in-out infinite, glowRing 5s ease-in-out infinite;
+  animation-delay: 0.25s;
+}
+
+.portal-ring:nth-child(3) {
+  width: 160px;
+  height: 160px;
+  border-color: rgba(255, 255, 255, 0.6);
+  animation: portalRing 5s ease-in-out infinite, glowRing 5s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.portal-ring:nth-child(4) {
+  width: 100px;
+  height: 100px;
+  border-color: rgba(255, 255, 255, 0.5);
+  animation: portalRing 5s ease-in-out infinite, glowRing 5s ease-in-out infinite;
+  animation-delay: 0.55s;
+}
+
+@keyframes portalRing {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes glowRing {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.logout-message {
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeMessage 5s ease-in-out forwards;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fadeMessage {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Particles floating around */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+/* Generate 20 particles */
+@keyframes floatParticle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .dashboard-nav {
+    width: 250px;
+    transform: translateX(-250px);
+  }
+  
+  .dashboard-content {
+    margin-left: 0;
+    width: 100vw;
+  }
+  
+  .dashboard-nav.open + .dashboard-content {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  
+  .dashboard-nav.open ~ .hamburger-menu {
+    left: 16px;
+  }
+}
+
+/* Gradient animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Keep the existing hamster wheel animations for fallback */
+.wheel-and-hamster {
+  display: none; /* Hide the hamster wheel in favor of the new animation */
+}
